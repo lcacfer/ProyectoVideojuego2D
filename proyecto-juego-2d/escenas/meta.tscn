@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://di7eu023t770v"]
+
+[ext_resource type="Texture2D" uid="uid://cfj5edlmfpkfe" path="res://recursos/sprites/Meta.png" id="1_60afg"]
+[ext_resource type="Script" uid="uid://cldgtwtjufb8a" path="res://codigo/meta.gd" id="2_bnmtg"]
+[ext_resource type="AudioStream" uid="uid://g8ovst2yqnit" path="res://recursos/sounds/meta.wav" id="3_w2tgb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bnmtg"]
+size = Vector2(14, 15)
+
+[node name="Meta" type="Sprite2D"]
+texture = ExtResource("1_60afg")
+script = ExtResource("2_bnmtg")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_bnmtg")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_w2tgb")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://tdmggusudbdg"]
+
+[ext_resource type="Script" uid="uid://batnlptmvxtrb" path="res://codigo/modo_visualizacion_pantalla.gd" id="1_dgdej"]
+
+[node name="ModoVisualizacion" type="Node"]
+script = ExtResource("1_dgdej")

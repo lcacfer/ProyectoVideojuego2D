@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvjnl8uwlenhc"]
+
+[ext_resource type="Texture2D" uid="uid://ggbulnmqdwyc" path="res://recursos/sprites/world_tileset.png" id="1_bob0o"]
+[ext_resource type="Script" uid="uid://b5lit63crfqet" path="res://codigo/objeto.gd" id="2_8gfep"]
+[ext_resource type="AudioStream" uid="uid://dv27v60lhx2ya" path="res://recursos/sounds/power_up.wav" id="3_qi83n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8gfep"]
+size = Vector2(8, 14)
+
+[node name="objeto" type="Sprite2D"]
+texture = ExtResource("1_bob0o")
+region_enabled = true
+region_rect = Rect2(16, 113, 16, 16)
+script = ExtResource("2_8gfep")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_8gfep")
+
+[node name="Sonido" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_qi83n")
+bus = &"Efecto sonido"
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="finished" from="Sonido" to="." method="_on_sonido_finished"]

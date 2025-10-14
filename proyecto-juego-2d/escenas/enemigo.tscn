@@ -1,0 +1,101 @@
+[gd_scene load_steps=15 format=3 uid="uid://cw11oh3iocpyw"]
+
+[ext_resource type="Script" uid="uid://cwxoeham5x82e" path="res://codigo/enemigo.gd" id="1_743j8"]
+[ext_resource type="Texture2D" uid="uid://cp0a72b5wm7ym" path="res://recursos/sprites/slime_green.png" id="1_uhebs"]
+[ext_resource type="PackedScene" uid="uid://wwx614nxxfew" path="res://escenas/zona_muerte.tscn" id="2_743j8"]
+[ext_resource type="Texture2D" uid="uid://bba8ve1cur4cf" path="res://recursos/sprites/slime_purple.png" id="2_hpq8b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5phiq"]
+atlas = ExtResource("2_hpq8b")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3owwl"]
+atlas = ExtResource("2_hpq8b")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xeh0o"]
+atlas = ExtResource("2_hpq8b")
+region = Rect2(48, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y3jsr"]
+atlas = ExtResource("2_hpq8b")
+region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hpq8b"]
+atlas = ExtResource("1_uhebs")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y7635"]
+atlas = ExtResource("1_uhebs")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vu81h"]
+atlas = ExtResource("1_uhebs")
+region = Rect2(48, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r6fnk"]
+atlas = ExtResource("1_uhebs")
+region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5phiq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5phiq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3owwl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xeh0o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y3jsr")
+}],
+"loop": true,
+"name": &"morado",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hpq8b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y7635")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vu81h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r6fnk")
+}],
+"loop": true,
+"name": &"verde",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3owwl"]
+size = Vector2(10, 13)
+
+[node name="enemigo" type="Node2D"]
+script = ExtResource("1_743j8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5phiq")
+animation = &"morado"
+autoplay = "morado"
+frame_progress = 0.46656013
+
+[node name="zonaMuerte" parent="." instance=ExtResource("2_743j8")]
+position = Vector2(0, 5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="zonaMuerte"]
+shape = SubResource("RectangleShape2D_3owwl")
+
+[node name="RayCast2Ddere" type="RayCast2D" parent="."]
+position = Vector2(0, 5)
+target_position = Vector2(7, 0)
+
+[node name="RayCast2Dizq" type="RayCast2D" parent="."]
+position = Vector2(0, 5)
+target_position = Vector2(-7, 0)

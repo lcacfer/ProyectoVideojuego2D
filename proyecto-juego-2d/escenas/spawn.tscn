@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cn1atlv880112"]
+
+[ext_resource type="Texture2D" uid="uid://ggbulnmqdwyc" path="res://recursos/sprites/world_tileset.png" id="1_d2e5x"]
+[ext_resource type="Script" uid="uid://b686havf1u1ag" path="res://codigo/spawn.gd" id="2_8jey3"]
+[ext_resource type="AudioStream" uid="uid://3o7cv6ng4ve5" path="res://recursos/sounds/spawn.wav" id="3_4vcgn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8jey3"]
+size = Vector2(12, 13)
+
+[node name="spawn" type="Sprite2D"]
+texture = ExtResource("1_d2e5x")
+region_enabled = true
+region_rect = Rect2(128, 49, 16, 16)
+script = ExtResource("2_8jey3")
+tinte_desactivado = Color(0.34033942, 0.34033927, 0.3403394, 1)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_8jey3")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_4vcgn")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,0 +1,61 @@
+[gd_scene load_steps=6 format=3 uid="uid://ch4e0j77iobih"]
+
+[ext_resource type="Script" uid="uid://bglj6kgvity0f" path="res://hud_portada.gd" id="1_5mp03"]
+[ext_resource type="Theme" uid="uid://c188eh6cgayjv" path="res://recursos/ui/tema.tres" id="1_dy376"]
+[ext_resource type="PackedScene" uid="uid://bvoknyuaa0vca" path="res://escenas/nivel1.tscn" id="2_pacq6"]
+[ext_resource type="AudioStream" uid="uid://cy1jcm0qd87aa" path="res://recursos/sounds/tap.wav" id="4_07pig"]
+[ext_resource type="Script" uid="uid://6n3gaq3ic6jr" path="res://codigo/audio_button.gd" id="4_g7ap7"]
+
+[node name="HUD_Portada" type="CanvasLayer"]
+script = ExtResource("1_5mp03")
+nivel_carga = ExtResource("2_pacq6")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 87.0
+offset_top = -111.0
+offset_right = 325.0
+offset_bottom = 141.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="ButtonComenzar" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("1_dy376")
+text = "Comenzar"
+script = ExtResource("4_g7ap7")
+sonido = ExtResource("4_07pig")
+metadata/_custom_type_script = "uid://6n3gaq3ic6jr"
+
+[node name="ButtonContinuar" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("1_dy376")
+disabled = true
+text = "Continuar"
+script = ExtResource("4_g7ap7")
+sonido = ExtResource("4_07pig")
+metadata/_custom_type_script = "uid://6n3gaq3ic6jr"
+
+[node name="ButtonSalir" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("1_dy376")
+text = "Salir"
+script = ExtResource("4_g7ap7")
+sonido = ExtResource("4_07pig")
+esperar_sonido = true
+metadata/_custom_type_script = "uid://6n3gaq3ic6jr"
+
+[connection signal="boton_pulsado" from="VBoxContainer/ButtonComenzar" to="." method="_on_button_comenzar_pressed"]
+[connection signal="boton_pulsado" from="VBoxContainer/ButtonContinuar" to="." method="_on_button_continuar_pressed"]
+[connection signal="boton_pulsado" from="VBoxContainer/ButtonSalir" to="." method="_on_button_salir_pressed"]
