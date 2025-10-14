@@ -476,4 +476,4 @@ position = Vector2(-728, 26)
 script = null
 
 [node name="Meta" parent="." instance=ExtResource("12_2iqcv")]
-position = Vector2(107, 9)
+position = Vector2(1114, 73)
